@@ -1,6 +1,10 @@
+2018-05-30  Tobias Abenius <Tobias.Abenius@Chalmers.se>
+
+* Added the stdiv function for elasticnet simulation
+
 2018-05-11  Tobias Abenius <Tobias.Abenius@Chalmers.se>
 
-* ccd_common.c: Fixed a memory bug
+* ccd_common.c: Fixed a memory bug with penaltyweight
 
 2012-04-26  Tobias Abenius <Tobias.Abenius@Chalmers.se>
 

@@ -96,6 +96,7 @@ int ccd_common(param_t* params) {
         myprintferr("******************************************\n"
             __FILE__ ": BUG OR PATHOLOGICAL DATA\n\n");
         myprintferr( "Please mail me the data that can reproduce this error <Tobias.Abenius@Chalmers.SE>\n");
+        myprintferr("stdiv = %f  \n",params->stdiv);
         myprintferr("w = %f  \n",params->w[j]);
         myprintferr("betajstar prev = %f  \n",betajstar_old);
         myprintferr("deltabeta prev = %f  \n",deltabeta);
@@ -113,7 +114,7 @@ int ccd_common(param_t* params) {
         return 0;
       }
 
-      betajstar = softthresh(betajstar, params->lambda*params->w[j]) / (factor2*XtXjj);
+      betajstar = softthresh(betajstar, params->lambda*params->w[j]) / (factor2*XtXjj * params->stdiv);
 #ifdef DEBUG
       if (params->trace >= 2) {
         FILE*D = fopen("ccd.debug","a");

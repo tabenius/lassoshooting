@@ -42,6 +42,7 @@ typedef struct params {
   int*nopenalize;
 
   double factor2;
+  double stdiv;
 } param_t;
 
 double softthresh(double x,double t);

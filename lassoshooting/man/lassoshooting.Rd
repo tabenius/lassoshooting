@@ -6,7 +6,7 @@
 Efficient estimates of sparse regression coefficients with a lasso (L1) penalty
 }
 \usage{
-lassoshooting(X=NULL, y=NULL, lambda, XtX=NULL, Xty=NULL, thr=1.0e-6, maxit=1e4, nopenalize=NULL, penaltyweight=NULL, trace=0, ...)
+lassoshooting(X=NULL, y=NULL, lambda, XtX=NULL, Xty=NULL, thr=1.0e-6, maxit=1e4, nopenalize=NULL, penaltyweight=NULL, stdiv=1, trace=0, ...)
 }
 \arguments{
 \item{X}{Design matrix: N by p matrix of p explanatory variables}
@@ -18,6 +18,7 @@ lassoshooting(X=NULL, y=NULL, lambda, XtX=NULL, Xty=NULL, thr=1.0e-6, maxit=1e4,
 \item{maxit}{Maximum number of iterations of outer loop. Default 10,000}
 \item{nopenalize}{List of coefficients not to penalize starting at 0}
 \item{penaltyweight}{p weights, one per variable, will be multiplied by overall lambda penalty}
+\item{stdiv}{A divisor for beta after the soft threshold step}
 \item{trace}{Level of detail for printing out information as iterations proceed.
 Default 0 -- no information}
 \item{...}{Reserved for experimental options}
@@ -59,6 +60,7 @@ y <- X %*% b + noise
 
 require(lassoshooting)
 # FIXME: write proper example using R built in dataset
+
 #add intercept column to the design matrix
 Xdesign <- cbind(1,X)
 lambda <- 20

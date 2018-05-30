@@ -37,6 +37,7 @@ SEXP ccd(SEXP args) {
   params.trace = 0;
   int *nopenalize = NULL;
   params.w = NULL;
+  params.stdiv = 1.0;
 
   // argument handling
   args = CDR(args); 
@@ -89,6 +90,9 @@ SEXP ccd(SEXP args) {
     } else if(strcasecmp(name,"factor")==0) {
       if (length(CAR(args)) != 1) { error(_("length of 'factor' should be 1!\n")); }
       factor2 = REAL(CAR(args))[0]; 
+    } else if(strcasecmp(name,"stdiv")==0) {
+      if (length(CAR(args)) != 1) { error(_("length of 'stdiv' should be 1!\n")); }
+      params.stdiv = REAL(CAR(args))[0]; 
     }
     else if (strcasecmp(name, "maxit")==0) { 
       if (length(CAR(args)) != 1) { error(_("length of 'maxit' should be 1!\n")); }
